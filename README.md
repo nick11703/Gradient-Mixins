@@ -8,6 +8,7 @@ A simplified way to create complex multi-colored CSS3 gradients
 1. Download gradient-mixins.less
 2. Import downloaded file `@import "gradient-mixins.less"`.
 
+```css
 @direction = 0-360 for linear or radial for radial
 @middleColor = color to be lightened and darkened by 5%
 `.gradient(@direction, @middleColor);`
@@ -18,6 +19,7 @@ A simplified way to create complex multi-colored CSS3 gradients
 @endColor = color to end the gradient
 `.gradient(@direction, @startColor, @endColor);`
 `.gradient-with-hover(@direction, @startColor, @endColor));`
+```
 
 ### Examples:
 **{less}:**  
