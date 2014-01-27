@@ -1,0 +1,105 @@
+// **** GRADIENTS ****
+// 
+// .gradient(linear, true, #FF0000, 0);
+// .gradient(linear, true, #FF0000, #333, 45);
+//
+// .gradient(radial, true, #FF0000);
+// .gradient(radial, true, #FF0000, #333);
+//
+
+// @direction = linear
+// @hover = true = reverse on hover
+// @middleColor = single color, will get lighter and darker colors by 5%
+// @angle = 0 - 360
+.gradient(@direction, @hover, @middleColor, @angle) when (@direction = linear){	
+	@startColor: lighten(@middleColor, 5%);
+	@endColor: darken(@middleColor, 5%);
+	.gradient(linear, @hover, @startColor, @endColor, @angle);
+}
+
+// @direction = radial
+// @hover = true = reverse on hover
+// @middleColor = single color, will get lighter and darker colors by 5%
+.gradient(@direction, @hover, @middleColor) when (@direction = radial){	
+	@startColor: lighten(@middleColor, 5%);
+	@endColor: darken(@middleColor, 5%);
+	.gradient(radial, @hover, @startColor, @endColor);
+}
+
+// @direction = linear
+// @hover = true
+// @startColor = color to start gradient from
+// @endColor = color to end gradient at
+// @angle = 0 - 360
+.gradient(linear, @hover, @startColor, @endColor, @angle) when (@hover = true){
+	.drawLinearGradient(@startColor, @endColor, @angle);
+	&:active, &:hover {
+		.drawLinearGradient(@endColor, @startColor, @angle);
+	}
+	&:visited {
+		.drawLinearGradient(@startColor, @endColor, @angle);
+	}
+}
+
+// @direction = linear
+// @hover != true
+// @startColor = color to start gradient from
+// @endColor = color to end gradient at
+// @angle = 0 - 360
+.gradient(linear, @hover, @startColor, @endColor, @angle){
+	.drawLinearGradient(@startColor, @endColor, @angle);
+}
+
+// linear mixin function
+// need to figure out -webkit-gradient angle
+.drawLinearGradient(@startColor, @endColor, @angle) {
+	@angleDeg: unit(@angle, deg);
+	@argbStartColor: argb(@startColor);
+	@argbEndColor: argb(@endColor);
+	background-color: @startColor;
+	background-image: -webkit-gradient(linear,0% 0%, 0% 100%,from(@startColor),to(@endColor));
+	background-image: -webkit-linear-gradient(@angleDeg,@startColor,@endColor);
+	background-image: -moz-linear-gradient(@angleDeg, top,@startColor,@endColor);
+	background-image: -ms-linear-gradient(@angleDeg,@startColor,@endColor);
+	background-image: -o-linear-gradient(@angleDeg,@startColor,@endColor);
+	background-image: linear-gradient(@angleDeg,@startColor,@endColor);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='@{startColor}',EndColorStr='@{endColor}');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=@{argbStartColor}, endColorstr=@{argbEndColor})";
+}
+
+// @direction = radial
+// @hover = true
+// @startColor = color to start gradient from
+// @endColor = color to end gradient at
+.gradient(radial, @hover, @startColor, @endColor) when (@hover = true){
+	.drawRadialGradient(@startColor, @endColor);
+	&:active, &:hover {
+		.drawRadialGradient(@endColor, @startColor);
+	}
+	&:visited {
+		.drawRadialGradient(@startColor, @endColor);
+	}
+}
+
+// @direction = radial
+// @hover != true
+// @startColor = color to start gradient from
+// @endColor = color to end gradient at
+.gradient(radial, @hover, @startColor, @endColor){
+	.drawRadialGradient(@startColor, @endColor);
+}
+
+// radial mixin function
+.drawRadialGradient(@startColor, @endColor) {
+	@argbStartColor: argb(@startColor);
+	@argbEndColor: argb(@endColor);
+	background-color: @startColor;
+	background-image: -moz-radial-gradient(center, ellipse cover,  @startColor, @endColor);
+	background-image: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(@startColor), color-stop(@endColor));
+	background-image: -webkit-radial-gradient(center, ellipse cover, @startColor, @endColor);
+	background-image: -o-radial-gradient(center, ellipse cover, @startColor, @endColor);
+	background-image: -ms-radial-gradient(center, ellipse cover, @startColor, @endColor);
+	background-image: radial-gradient(ellipse at center, @startColor, @endColor);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='@{startColor}',EndColorStr='@{endColor}');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=@{argbStartColor}, endColorstr=@{argbEndColor})";
+}
