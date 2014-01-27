@@ -12,9 +12,6 @@
 // .gradient-with-hover(radial, #FF0000);
 // .gradient-with-hover(radial, #FF0000, #333);
 
-
-
-
 // @direction = radial
 // @middleColor = single color, will get lighter and darker colors by 5%
 .gradient(@direction, @middleColor) when (@direction = radial){
@@ -23,36 +20,27 @@
 	.drawRadialGradient(@startColor, @endColor);
 }
 
-// @direction = linear
+// @direction = 0 - 360
 // @middleColor = single color, will get lighter and darker colors by 5%
-// @angle = 0 - 360
 .gradient(@direction, @middleColor) when (isnumber(@direction)){
 	@startColor: lighten(@middleColor, 5%);
 	@endColor: darken(@middleColor, 5%);
 	.drawLinearGradient(@direction, @startColor, @endColor);
 }
 
-
 // @direction = radial
 // @startColor = color to start gradient from
 // @endColor = color to end gradient at
-// @angle = 0 - 360
 .gradient(@direction, @startColor, @endColor) when (@direction = radial){
 	.drawRadialGradient(@startColor, @endColor);
 }
 
-// @direction = linear
+// @direction = 0 - 360
 // @startColor = color to start gradient from
 // @endColor = color to end gradient at
-// @angle = 0 - 360
 .gradient(@direction, @startColor, @endColor) when (isnumber(@direction)){
 	.drawLinearGradient(@direction, @startColor, @endColor);
 }
-
-
-
-
-
 
 // @direction = radial
 // @middleColor = single color, will get lighter and darker colors by 5%
@@ -81,9 +69,8 @@
 	}
 }
 
-// @direction = linear
+// @direction = 0 - 360
 // @middleColor = single color, will get lighter and darker colors by 5%
-// @angle = 0 - 360
 .gradient-with-hover(@direction, @middleColor) when (isnumber(@direction)){
 	@startColor: lighten(@middleColor, 5%);
 	@endColor: darken(@middleColor, 5%);
@@ -96,10 +83,9 @@
 	}
 }
 
-// @direction = linear
+// @direction = 0 - 360
 // @startColor = color to start gradient from
 // @endColor = color to end gradient at
-// @angle = 0 - 360
 .gradient-with-hover(@direction, @startColor, @endColor) when (isnumber(@direction)){
 	.drawLinearGradient(@direction, @startColor, @endColor);
 	&:active, &:hover {
@@ -109,8 +95,6 @@
 		.drawLinearGradient(@direction, @startColor, @endColor);
 	}
 }
-
-
 
 // linear mixin function
 // need to figure out -webkit-gradient angle
