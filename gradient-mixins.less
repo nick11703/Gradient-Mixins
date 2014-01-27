@@ -1,26 +1,19 @@
 // **** GRADIENTS ****
 // 
-// .gradient(linear, #FF0000, 0);
-// .gradient(linear, #FF0000, #333, 45);
+// .gradient(linear, 0, #FF0000);
+// .gradient(linear, 45, #FF0000, #333);
 //
 // .gradient(radial, #FF0000);
 // .gradient(radial, #FF0000, #333);
 //
-// .gradient-with-hover(linear, #FF0000, 0);
-// .gradient-with-hover(linear, #FF0000, #333, 45);
+// .gradient-with-hover(linear, 0, #FF0000);
+// .gradient-with-hover(linear, 45, #FF0000, #333);
 //
 // .gradient-with-hover(radial, #FF0000);
 // .gradient-with-hover(radial, #FF0000, #333);
 
 
-// @direction = linear
-// @middleColor = single color, will get lighter and darker colors by 5%
-// @angle = 0 - 360
-.gradient(@direction, @middleColor, @angle) when (@direction = linear){
-	@startColor: lighten(@middleColor, 5%);
-	@endColor: darken(@middleColor, 5%);
-	.drawLinearGradient(@startColor, @endColor, @angle);
-}
+
 
 // @direction = radial
 // @middleColor = single color, will get lighter and darker colors by 5%
@@ -31,12 +24,14 @@
 }
 
 // @direction = linear
-// @startColor = color to start gradient from
-// @endColor = color to end gradient at
+// @middleColor = single color, will get lighter and darker colors by 5%
 // @angle = 0 - 360
-.gradient(@direction, @startColor, @endColor, @angle) when (@direction = linear){
-	.drawLinearGradient(@startColor, @endColor, @angle);
+.gradient(@direction, @middleColor) when (isnumber(@direction)){
+	@startColor: lighten(@middleColor, 5%);
+	@endColor: darken(@middleColor, 5%);
+	.drawLinearGradient(@direction, @startColor, @endColor);
 }
+
 
 // @direction = radial
 // @startColor = color to start gradient from
@@ -47,33 +42,17 @@
 }
 
 // @direction = linear
-// @middleColor = single color, will get lighter and darker colors by 5%
-// @angle = 0 - 360
-.gradient-with-hover(@direction, @middleColor, @angle) when (@direction = linear){
-	@startColor: lighten(@middleColor, 5%);
-	@endColor: darken(@middleColor, 5%);
-	.drawLinearGradient(@startColor, @endColor, @angle);
-	&:active, &:hover {
-		.drawLinearGradient(@endColor, @startColor, @angle);
-	}
-	&:visited {
-		.drawLinearGradient(@startColor, @endColor, @angle);
-	}
-}
-
-// @direction = linear
 // @startColor = color to start gradient from
 // @endColor = color to end gradient at
 // @angle = 0 - 360
-.gradient-with-hover(@direction, @startColor, @endColor, @angle) when (@direction = linear){
-	.drawLinearGradient(@startColor, @endColor, @angle);
-	&:active, &:hover {
-		.drawLinearGradient(@endColor, @startColor, @angle);
-	}
-	&:visited {
-		.drawLinearGradient(@startColor, @endColor, @angle);
-	}
+.gradient(@direction, @startColor, @endColor) when (isnumber(@direction)){
+	.drawLinearGradient(@direction, @startColor, @endColor);
 }
+
+
+
+
+
 
 // @direction = radial
 // @middleColor = single color, will get lighter and darker colors by 5%
@@ -102,9 +81,40 @@
 	}
 }
 
+// @direction = linear
+// @middleColor = single color, will get lighter and darker colors by 5%
+// @angle = 0 - 360
+.gradient-with-hover(@direction, @middleColor) when (isnumber(@direction)){
+	@startColor: lighten(@middleColor, 5%);
+	@endColor: darken(@middleColor, 5%);
+	.drawLinearGradient(@direction, @startColor, @endColor);
+	&:active, &:hover {
+		.drawLinearGradient(@direction, @endColor, @startColor);
+	}
+	&:visited {
+		.drawLinearGradient(@direction, @startColor, @endColor);
+	}
+}
+
+// @direction = linear
+// @startColor = color to start gradient from
+// @endColor = color to end gradient at
+// @angle = 0 - 360
+.gradient-with-hover(@direction, @startColor, @endColor) when (isnumber(@direction)){
+	.drawLinearGradient(@direction, @startColor, @endColor);
+	&:active, &:hover {
+		.drawLinearGradient(@direction, @endColor, @startColor);
+	}
+	&:visited {
+		.drawLinearGradient(@direction, @startColor, @endColor);
+	}
+}
+
+
+
 // linear mixin function
 // need to figure out -webkit-gradient angle
-.drawLinearGradient(@startColor, @endColor, @angle) {
+.drawLinearGradient(@angle, @startColor, @endColor) {
 	@angleDeg: unit(@angle, deg);
 	@argbStartColor: argb(@startColor);
 	@argbEndColor: argb(@endColor);
