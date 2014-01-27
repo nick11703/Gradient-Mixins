@@ -12,7 +12,7 @@ A simplified way to create complex multi-colored CSS3 gradients
 **{less}:**  
 ```css
     .element {
-        .gradient(linear, true, #FF0000, 0);
+        .gradient-with-hover(linear, #FF0000, 0);
     }
 ```  
 **CSS result:**  
