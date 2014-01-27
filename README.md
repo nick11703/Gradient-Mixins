@@ -8,15 +8,6 @@ A simplified way to create complex multi-colored CSS3 gradients
 1. Download gradient-mixins.less
 2. Import downloaded file `@import "gradient-mixins.less`.
 
-
-// 
-// .gradient(linear, true, #FF0000, 0);
-// .gradient(linear, true, #FF0000, #333, 45);
-//
-// .gradient(radial, true, #FF0000);
-// .gradient(radial, true, #FF0000, #333);
-//
-
 ### Examples:
 **{less}:**  
 ```css
