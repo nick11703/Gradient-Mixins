@@ -12,13 +12,14 @@ A simplified way to create complex multi-colored CSS3 gradients
 **{less}:**  
 ```css
     .element {
-	/* Linear gradient at 0 degrees */
+        /* Linear gradient at 0 degrees */
         .gradient(0, #FF0000);
     }
 ```  
 **CSS result:**  
 ```css
     .element {
+        /* Linear gradient at 0 degrees */
         background-color: #ff1a1a;
         background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff1a1a), to(#e60000));
         background-image: -webkit-linear-gradient(0deg, #ff1a1a, #e60000);
@@ -35,12 +36,14 @@ A simplified way to create complex multi-colored CSS3 gradients
 **{less}:**  
 ```css
     .element {
+        /* Linear gradient at 0 degrees with hover */
         .gradient-with-hover(0, #FF0000);
     }
 ```  
 **CSS result:**  
 ```css
     .element {
+        /* Linear gradient at 0 degrees with hover */
         background-color: #ff1a1a;
         background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff1a1a), to(#e60000));
         background-image: -webkit-linear-gradient(0deg, #ff1a1a, #e60000);
@@ -75,6 +78,76 @@ A simplified way to create complex multi-colored CSS3 gradients
         -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffff1a1a, endColorstr=#ffe60000)";
     }
 ```
+**{less}:**  
+```css
+    .element {
+        /* Radial gradient */
+        .gradient(radial, #FF0000);
+    }
+```  
+**CSS result:**  
+```css
+    .element {
+        /* Radial gradient */
+        background-color: #ff1a1a;
+        background-image: -moz-radial-gradient(center, ellipse cover, #ff1a1a, #e60000);
+        background-image: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(#ff1a1a), color-stop(#e60000));
+        background-image: -webkit-radial-gradient(center, ellipse cover, #ff1a1a, #e60000);
+        background-image: -o-radial-gradient(center, ellipse cover, #ff1a1a, #e60000);
+        background-image: -ms-radial-gradient(center, ellipse cover, #ff1a1a, #e60000);
+        background-image: radial-gradient(ellipse at center, #ff1a1a, #e60000);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ff1a1a', EndColorStr='#e60000');
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffff1a1a, endColorstr=#ffe60000)";
+    }
+```
+
+
+**{less}:**  
+```css
+    .element {
+        /* Radial gradient with hover */
+        .gradient-with-hover(0, #FF0000, #333333);
+    }
+```  
+**CSS result:**  
+```css
+    .element {
+        /* Radial gradient with hover */
+        background-color: #ff0000;
+        background-image: -moz-radial-gradient(center, ellipse cover, #ff0000, #333333);
+        background-image: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(#ff0000), color-stop(#333333));
+        background-image: -webkit-radial-gradient(center, ellipse cover, #ff0000, #333333);
+        background-image: -o-radial-gradient(center, ellipse cover, #ff0000, #333333);
+        background-image: -ms-radial-gradient(center, ellipse cover, #ff0000, #333333);
+        background-image: radial-gradient(ellipse at center, #ff0000, #333333);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ff0000', EndColorStr='#333333');
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffff0000, endColorstr=#ff333333)";
+    }
+    .element:active,
+    .element:hover {
+        background-color: #333333;
+        background-image: -moz-radial-gradient(center, ellipse cover, #333333, #ff0000);
+        background-image: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(#333333), color-stop(#ff0000));
+        background-image: -webkit-radial-gradient(center, ellipse cover, #333333, #ff0000);
+        background-image: -o-radial-gradient(center, ellipse cover, #333333, #ff0000);
+        background-image: -ms-radial-gradient(center, ellipse cover, #333333, #ff0000);
+        background-image: radial-gradient(ellipse at center, #333333, #ff0000);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#333333', EndColorStr='#ff0000');
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ff333333, endColorstr=#ffff0000)";
+    }
+    .element:visited {
+        background-color: #ff0000;
+        background-image: -moz-radial-gradient(center, ellipse cover, #ff0000, #333333);
+        background-image: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(#ff0000), color-stop(#333333));
+        background-image: -webkit-radial-gradient(center, ellipse cover, #ff0000, #333333);
+        background-image: -o-radial-gradient(center, ellipse cover, #ff0000, #333333);
+        background-image: -ms-radial-gradient(center, ellipse cover, #ff0000, #333333);
+        background-image: radial-gradient(ellipse at center, #ff0000, #333333);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ff0000', EndColorStr='#333333');
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffff0000, endColorstr=#ff333333)";
+    }
+```
+
 
 
 
