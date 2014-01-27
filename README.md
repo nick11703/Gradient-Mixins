@@ -12,6 +12,7 @@ A simplified way to create complex multi-colored CSS3 gradients
 **{less}:**  
 ```css
     .element {
+	/* Linear gradient at 0 degrees */
         .gradient(0, #FF0000);
     }
 ```  
