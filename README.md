@@ -18,7 +18,6 @@ A simplified way to create complex multi-colored CSS3 gradients
 **CSS result:**  
 ```css
     .element {
-    .element {
         background-color: #ff1a1a;
         background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff1a1a), to(#e60000));
         background-image: -webkit-linear-gradient(0deg, #ff1a1a, #e60000);
