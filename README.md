@@ -6,9 +6,31 @@ A simplified way to create complex multi-colored CSS3 gradients
 
 #### How to use it:
 1. Download gradient-mixins.less
-2. Import downloaded file `@import "gradient-mixins.less`.
+2. Import downloaded file `@import "gradient-mixins.less"`.
 
 ### Examples:
+**{less}:**  
+```css
+    .element {
+        .gradient(linear, #FF0000, 0);
+    }
+```  
+**CSS result:**  
+```css
+    .element {
+        background-color: #ff1a1a;
+        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff1a1a), to(#e60000));
+        background-image: -webkit-linear-gradient(0deg, #ff1a1a, #e60000);
+        background-image: -moz-linear-gradient(0deg, top, #ff1a1a, #e60000);
+        background-image: -ms-linear-gradient(0deg, #ff1a1a, #e60000);
+        background-image: -o-linear-gradient(0deg, #ff1a1a, #e60000);
+        background-image: linear-gradient(0deg, #ff1a1a, #e60000);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ff1a1a', EndColorStr='#e60000');
+        -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffff1a1a, endColorstr=#ffe60000)";
+    }
+```
+
+
 **{less}:**  
 ```css
     .element {
