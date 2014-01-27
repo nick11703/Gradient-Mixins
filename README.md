@@ -106,7 +106,7 @@ A simplified way to create complex multi-colored CSS3 gradients
 ```css
     .element {
         /* Radial gradient with hover */
-        .gradient-with-hover(0, #FF0000, #333333);
+        .gradient-with-hover(radial, #FF0000, #333333);
     }
 ```  
 **CSS result:**  
