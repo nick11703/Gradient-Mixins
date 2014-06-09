@@ -1,3 +1,4 @@
 *.css
 *.html
 style.less
+.gitignore
