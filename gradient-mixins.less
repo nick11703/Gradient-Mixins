@@ -11,6 +11,8 @@
 //
 // .gradient-with-hover(radial, #FF0000);
 // .gradient-with-hover(radial, #FF0000, #333);
+//
+// .drawLinearGradientWithURL(@angle, @startColor, @endColor, @url);
 
 // @direction = radial
 // @middleColor = single color, will get lighter and darker colors by 5%
@@ -124,6 +126,25 @@
 	background-image: -o-radial-gradient(center, ellipse cover, @startColor, @endColor);
 	background-image: -ms-radial-gradient(center, ellipse cover, @startColor, @endColor);
 	background-image: radial-gradient(ellipse at center, @startColor, @endColor);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='@{startColor}',EndColorStr='@{endColor}');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=@{argbStartColor}, endColorstr=@{argbEndColor})";
+}
+
+
+// linear mixin with background image layers function
+// need to figure out -webkit-gradient angle
+.drawLinearGradientWithURL(@angle, @startColor, @endColor, @url) {
+	@angleDeg: unit(@angle, deg);
+	@argbStartColor: argb(@startColor);
+	@argbEndColor: argb(@endColor);
+	background-color: @startColor;
+	background-image: url(@url);
+	background-image: url(@url), -webkit-gradient(linear,0% 0%, 0% 100%,from(@startColor),to(@endColor));
+	background-image: url(@url), -webkit-linear-gradient(@angleDeg,@startColor,@endColor);
+	background-image: url(@url), -moz-linear-gradient(@angleDeg, top,@startColor,@endColor);
+	background-image: url(@url), -ms-linear-gradient(@angleDeg,@startColor,@endColor);
+	background-image: url(@url), -o-linear-gradient(@angleDeg,@startColor,@endColor);
+	background-image: url(@url), linear-gradient(@angleDeg,@startColor,@endColor);
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='@{startColor}',EndColorStr='@{endColor}');
 	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=@{argbStartColor}, endColorstr=@{argbEndColor})";
 }
